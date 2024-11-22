@@ -16,7 +16,7 @@ struct BottomAppBar: View {
     @State private var previousTab: Int = 0
     
     init(tabItems: [TabItem],
-         fabIcon: Image = Image("FAB"),
+         fabIcon: Image = Image(.FAB),
          fabAction: @escaping () -> Void = {}) {
         self.tabItems = tabItems
         self.fabIcon = fabIcon
@@ -24,6 +24,19 @@ struct BottomAppBar: View {
     }
     
     var body: some View {
+        TabPresentation()
+        
+            .overlay(alignment: .bottom) {
+                AppBar()
+                    .overlay {
+                        FAB()
+                    }
+            }
+            .ignoresSafeArea(edges: .bottom)
+    }
+    
+    @ViewBuilder
+    private func TabPresentation() -> some View {
         VStack {
             tabItems[selectedTab]
                 .content
@@ -34,13 +47,6 @@ struct BottomAppBar: View {
         .animation(.spring(duration: 0.3), value: selectedTab)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.accent)
-        .overlay(alignment: .bottom) {
-            AppBar()
-                .overlay {
-                    FAB()
-                }
-        }
-        .ignoresSafeArea(edges: .bottom)
     }
     
     @ViewBuilder
@@ -53,11 +59,9 @@ struct BottomAppBar: View {
                     .fill(.accent)
                     .shadow(radius: 5)
                 
-                HStack {
-                    Content()
-                }
-                .padding(.horizontal)
-                .frame(height: 56)
+                Tabs()
+                    .padding(.horizontal)
+                    .frame(height: 56)
             }
         }
         .frame(height: 56 + 16)
@@ -77,32 +81,35 @@ struct BottomAppBar: View {
         .clipShape(Circle())
         .shadow(radius: 4)
         // Half of FAB height to center it on the bar
-        .offset(y: -28)
+        .offset(y: -30)
     }
     
     @ViewBuilder
-    private func Content() -> some View {
-        ForEach(0...tabItems.count - 1, id: \.self) { i in
-            Spacer()
-            
-            tabItems[i]
-                .label
-                .labelStyle(.bottomNavigation)
-                .foregroundStyle(selectedTab == i ? Color.action : Color.onAccent)
-                .onTapGesture {
-                    withAnimation {
-                        previousTab = selectedTab
-                        selectedTab = i
+    private func Tabs() -> some View {
+        HStack {
+            ForEach(0...tabItems.count - 1, id: \.self) { i in
+                Spacer()
+                
+                tabItems[i]
+                    .label
+                    .labelStyle(.bottomNavigation)
+                    .foregroundStyle(selectedTab == i ? Color.action : Color.onAccent)
+                    .onTapGesture {
+                        withAnimation {
+                            previousTab = selectedTab
+                            selectedTab = i
+                        }
                     }
+                
+                Spacer()
+                
+                // Add space under fab
+                if i == (tabItems.count / 2) - 1 {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
                 }
-            
-            Spacer()
-            
-            if i == (tabItems.count / 2) - 1 {
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
             }
         }
     }

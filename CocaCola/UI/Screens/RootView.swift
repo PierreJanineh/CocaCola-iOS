@@ -25,8 +25,12 @@ struct RootView: View {
     ]
     
     var body: some View {
-        BottomAppBar(tabItems: tabItems) {
-            // TODO: Handle fab touch gesture
+        VStack(spacing: 0) {
+            TopAppBar()
+            
+            BottomAppBar(tabItems: tabItems) {
+                // TODO: Handle fab touch gesture
+            }
         }
         .foregroundStyle(.onAccent)
     }
