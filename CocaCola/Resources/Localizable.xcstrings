@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "he",
+  "strings" : {
+    "games" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "משחקים"
+          }
+        }
+      }
+    },
+    "gift_shop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "חנות המתנות"
+          }
+        }
+      }
+    },
+    "home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "בית"
+          }
+        }
+      }
+    },
+    "volunteering" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "עושים טוב"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
