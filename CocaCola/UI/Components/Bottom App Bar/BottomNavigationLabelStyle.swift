@@ -12,7 +12,7 @@ struct BottomNavigationLabelStyle: LabelStyle {
         VStack {
             configuration.icon
             configuration.title
-                .font(.subheadline)
+                .font(.customSubheadline)
         }
     }
 }

@@ -28,6 +28,7 @@ struct RootView: View {
         BottomAppBar(tabItems: tabItems) {
             // TODO: Handle fab touch gesture
         }
+        .foregroundStyle(.onAccent)
     }
 }
 

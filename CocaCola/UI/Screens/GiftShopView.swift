@@ -10,6 +10,7 @@ import SwiftUI
 struct GiftShopView: View {
     var body: some View {
         Text("gift_shop")
+            .font(.customTitle)
     }
 }
 

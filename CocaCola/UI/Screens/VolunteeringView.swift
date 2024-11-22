@@ -10,6 +10,7 @@ import SwiftUI
 struct VolunteeringView: View {
     var body: some View {
         Text("volunteering")
+            .font(.customTitle)
     }
 }
 

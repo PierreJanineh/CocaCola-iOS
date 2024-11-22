@@ -13,6 +13,7 @@ struct BottomAppBar: View {
     let fabAction: () -> Void
     
     @State private var selectedTab: Int = 0
+    @State private var previousTab: Int = 0
     
     init(tabItems: [TabItem],
          fabIcon: Image = Image("FAB"),
@@ -24,8 +25,13 @@ struct BottomAppBar: View {
     
     var body: some View {
         VStack {
-            tabItems[selectedTab].content
+            tabItems[selectedTab]
+                .content
+                .transition(.moveAndFade(from: previousTab,
+                                         to: selectedTab))
+                .id("content_\(selectedTab)")
         }
+        .animation(.spring(duration: 0.3), value: selectedTab)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.accent)
         .overlay(alignment: .bottom) {
@@ -84,7 +90,10 @@ struct BottomAppBar: View {
                 .labelStyle(.bottomNavigation)
                 .foregroundStyle(selectedTab == i ? Color.action : Color.onAccent)
                 .onTapGesture {
-                    selectedTab = i
+                    withAnimation {
+                        previousTab = selectedTab
+                        selectedTab = i
+                    }
                 }
             
             Spacer()
