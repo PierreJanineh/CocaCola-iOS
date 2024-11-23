@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PointsView: View {
+    typealias S = Constants.Strings.PointsView
+    typealias D = Constants.Dimensions.PointsView
+    
     private let image: Image
     private let color: Color
     private let value: Int
@@ -15,7 +18,7 @@ struct PointsView: View {
     init(type: Type, value: Int) {
         switch type {
         case .angels:
-            self.image = Image(systemName: "face.smiling.fill")
+            self.image = Image(systemName: S.IC_ANGEL)
             self.color = .white
         case .lids:
             self.image = Image(.profile)
@@ -30,7 +33,7 @@ struct PointsView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(color)
-                .frame(width: 15)
+                .frame(width: D.IC_W)
             
             Text(value.description)
                 .font(.customBody)

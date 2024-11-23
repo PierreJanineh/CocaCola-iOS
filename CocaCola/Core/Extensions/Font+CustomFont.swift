@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Font {
     static func customFont(size: CGFloat, weight: FontWeight = .Regular) -> Font {
-        return .custom("FbSpacer-\(weight)", size: size)
+        return .custom(Constants.Strings.FONT.appending(weight.rawValue), size: size)
     }
     
     static let customTitle = customFont(size: 28, weight: .Bold)

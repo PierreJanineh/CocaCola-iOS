@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct RootView: View {
+    typealias S = Constants.Strings.RootView
     
     private let tabItems: [TabItem] = [
-        .init(label: Label("home", systemImage: "house.fill")) {
+        .init(label: Label(S.HOME, systemImage: S.IC_HOME)) {
             HomeView()
         },
-        .init(label: Label("gift_shop", systemImage: "gift.fill")) {
+        .init(label: Label(S.GIFT_SHOP, systemImage: S.IC_GIFT_SHOP)) {
             GiftShopView()
         },
-        .init(label: Label("volunteering", systemImage: "face.smiling.fill")) {
+        .init(label: Label(S.VOLUNTEERING, systemImage: S.IC_VOLUNTEERING)) {
             VolunteeringView()
         },
-        .init(label: Label("games", systemImage: "gamecontroller.fill")) {
+        .init(label: Label(S.GAMES, systemImage: S.IC_GAMES)) {
             GamesView()
         }
     ]

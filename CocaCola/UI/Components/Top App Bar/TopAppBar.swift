@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct TopAppBar: View {
+    typealias D = Constants.Dimensions.TopAppBar
+    
+    private let viewModel: ViewModel = .init()
+    
     var body: some View {
         HStack {
             ProfileDetailsView()
-                .padding(.leading, 20)
+                .padding(.leading, D.PADDING)
             
             Image(.logo)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.action)
-                .padding(20)
+                .padding(D.PADDING)
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(height: 80)
+        .frame(height: D.BAR_H)
         .background(.accent)
     }
     
@@ -29,9 +33,9 @@ struct TopAppBar: View {
         HStack {
             ProfileImage()
             
-            VStack(alignment: .leading, spacing: 5) {
-                PointsView(type: .lids, value: 172)
-                PointsView(type: .angels, value: 2)
+            VStack(alignment: .leading, spacing: D.POINTS_SPACE) {
+                PointsView(type: .lids, value: viewModel.lidsCount)
+                PointsView(type: .angels, value: viewModel.angelsCount)
             }
         }
     }
@@ -48,7 +52,7 @@ struct TopAppBar: View {
                     .foregroundStyle(.action)
                     .padding()
             }
-            .padding(5)
+            .padding(D.PROFILE_IMG_PADDING)
     }
 }
 

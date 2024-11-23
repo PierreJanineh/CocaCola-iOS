@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BottomAppBar: View {
+    typealias D = Constants.Dimensions.BottomAppBar
+    
     let tabItems: [TabItem]
     let fabIcon: Image
     let fabAction: () -> Void
@@ -25,7 +27,6 @@ struct BottomAppBar: View {
     
     var body: some View {
         TabPresentation()
-        
             .overlay(alignment: .bottom) {
                 AppBar()
                     .overlay {
@@ -42,7 +43,7 @@ struct BottomAppBar: View {
                 .content
                 .transition(.moveAndFade(from: previousTab,
                                          to: selectedTab))
-                .id("content_\(selectedTab)")
+                .id(selectedTab)
         }
         .animation(.spring(duration: 0.3), value: selectedTab)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,14 +58,14 @@ struct BottomAppBar: View {
             ZStack {
                 BottomAppBarShape()
                     .fill(.accent)
-                    .shadow(radius: 5)
+                    .shadow(radius: D.SHADOW)
                 
                 Tabs()
                     .padding(.horizontal)
-                    .frame(height: 56)
+                    .frame(height: D.BTN_W)
             }
         }
-        .frame(height: 56 + 16)
+        .frame(height: D.BTN_W + D.BAR_PADDING)
     }
     
     @ViewBuilder
@@ -74,14 +75,14 @@ struct BottomAppBar: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.action)
-                .frame(width: 53, height: 53)
+                .frame(width: D.FAB_IC_W, height: D.FAB_IC_W)
         }
-        .frame(width: 56, height: 56)
+        .frame(width: D.BTN_W, height: D.BTN_W)
         .background(Color.white)
         .clipShape(Circle())
-        .shadow(radius: 4)
+        .shadow(radius: D.SHADOW)
         // Half of FAB height to center it on the bar
-        .offset(y: -30)
+        .offset(y: -(D.BTN_W / 2))
     }
     
     @ViewBuilder
@@ -101,13 +102,9 @@ struct BottomAppBar: View {
                         }
                     }
                 
-                Spacer()
-                
-                // Add space under fab
-                if i == (tabItems.count / 2) - 1 {
-                    Spacer()
-                    Spacer()
-                    Spacer()
+                // Handle spacing in the middle (in place of fab)
+                let isMiddle = i == (tabItems.count / 2) - 1
+                ForEach(0...(isMiddle ? 4 : 1), id: \.self) { _ in
                     Spacer()
                 }
             }
