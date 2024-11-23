@@ -37,13 +37,16 @@ struct SingleAdCellView: View {
     @ViewBuilder
     private func OverlayHeader() -> some View {
         VStack {
-            Text(singleAd.title)
-                .font(.customTitle)
-                .foregroundStyle(.white)
-            
-            Text(singleAd.subtitle)
-                .font(.customBody)
-                .foregroundStyle(.white)
+            Group {
+                Text(singleAd.title)
+                    .font(.customTitle)
+                    .foregroundStyle(.white)
+                
+                Text(singleAd.subtitle)
+                    .font(.customBody)
+                    .foregroundStyle(.white)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .makeHeader()
     }
