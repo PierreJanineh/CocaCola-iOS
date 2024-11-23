@@ -25,7 +25,7 @@ struct TopAppBar: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .frame(height: D.BAR_H)
-        .background(.accent)
+        .background(.black)
     }
     
     @ViewBuilder

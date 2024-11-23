@@ -11,5 +11,5 @@ struct SingleAd: Identifiable {
     let id: UUID = .init()
     let title: String
     let subtitle: String
-    let image: URL? = nil
+    let image: URL?
 }

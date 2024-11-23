@@ -47,7 +47,7 @@ struct BottomAppBar: View {
         }
         .animation(.spring(duration: 0.3), value: selectedTab)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.accent)
+        .paintAppBackground()
     }
     
     @ViewBuilder

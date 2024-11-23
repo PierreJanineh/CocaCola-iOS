@@ -37,5 +37,6 @@ struct CircularScrollView: View {
                 return list
             }
         }
+        .offset(y: D.OFFSET_Y)
     }
 }

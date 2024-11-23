@@ -37,6 +37,7 @@ struct PointsView: View {
             
             Text(value.description)
                 .font(.customBody)
+                .foregroundStyle(.white)
         }
     }
     

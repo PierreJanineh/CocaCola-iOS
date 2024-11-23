@@ -19,7 +19,8 @@ extension Constants {
         
         struct CircularScrollView {
             static let WIDTH_MULTIPLIER: CGFloat = 0.8
-            static let HEIGHT_MULTIPLIER: CGFloat = 0.6
+            static let HEIGHT_MULTIPLIER: CGFloat = 0.7
+            static let OFFSET_Y: CGFloat = -40
         }
         
         struct BottomAppBar {
@@ -48,7 +49,18 @@ extension Constants {
             static let BAR_H: CGFloat = 80
             static let PADDING: CGFloat = 20
             static let PROFILE_IMG_PADDING: CGFloat = 5
-            static let POINTS_SPACE: CGFloat = 5
+            static let POINTS_SPACE: CGFloat = 10
+        }
+        
+        struct SingeAdCard {
+            static let CORNER_RADIUS: CGFloat = 40
+        }
+        
+        struct SingleAdCellView {
+            static let IC_LID_W: CGFloat = 100
+            static let HEADER_PADDING: CGFloat = 40
+            static let HEADER_MAX_H: CGFloat = 175
+            static let HEADER_RADIUS: CGFloat = 40
         }
     }
 }
