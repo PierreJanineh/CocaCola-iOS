@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel: ViewModel = .init()
+    
     var body: some View {
-        Text("home")
+        CircularScrollView(items: viewModel.items)
     }
 }
 
